@@ -68,6 +68,11 @@ Dentro de este proyecto de azure estamos documentado todo nuestro proceso como e
 
    - La aplicación React se iniciará en `http://localhost:3000/`.
 
+## Referencias: 
+
+  - https://github.com/SananSuleymanov/OpenAI_Flask_Image_Generator
+  Este repositorio sirvio de ayuda para crear la base de la comunicacion con la api de openai
+
 ## Licencia
 
-...
+
