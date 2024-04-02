@@ -1,0 +1,7 @@
+pip install virtualenv
+pip install flask
+pip install openai
+pip install opencv-python
+pip install dotenv-python
+pip install python-dotenv
+pip install requests
