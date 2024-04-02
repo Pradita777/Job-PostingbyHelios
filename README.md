@@ -1,6 +1,11 @@
 # Job-Posting by Helios
 Desarrollar una herramienta de inteligencia artificial generativa que automatizará la creación y publicación de ofertas de trabajo, destacando de manera efectiva la marca empleadora de los clientes de Magneto en el mercado competitivo, ofreciendo presentaciones de vacantes personalizables, atractivas y basadas en datos.
 
+## Link al proyecto en Azure DevOps
+Dentro de este proyecto de azure estamos documentado todo nuestro proceso como equipo.
+> [Job Posting - Helios](https://dev.azure.com/jmmunozr/P2)
+
+
 ## Helio's Members:
 
 - Jose Miguel Muñoz Rios
