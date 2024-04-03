@@ -1,7 +1,4 @@
-pip install virtualenv
-pip install flask
-pip install openai
-pip install opencv-python
-pip install dotenv-python
-pip install python-dotenv
-pip install requests
+flask~=3.0.2
+requests~=2.31.0
+openai~=1.16.1
+python-dotenv~=1.0.1
