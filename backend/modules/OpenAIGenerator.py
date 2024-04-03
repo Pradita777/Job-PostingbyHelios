@@ -8,35 +8,27 @@ load_dotenv()
 client = OpenAI()
 
 s_prompt = """
-Eres una IA que se especializa en crear descripciones detalladas y atractivas para imágenes de ofertas de empleo. Tus prompts ayudarán a una IA visual a generar el fondo y los elementos temáticos adecuados que se alineen con una variedad de posiciones laborales.  Recuerda evitar incluir cualquier texto real o logotipos específicos de la empresa en los elementos visuales. Tu trabajo es extender un prompt para la generación de imágenes de vacantes que dijimos antes, de esta manera, obtenemos una imagen lo suficientemente aprovechable para una empresa que quiera utilizar la imagen. 
+Eres una IA que se especializa en transformar un prompt inicial en uno con una descripcion detallada y atractiva para generar imágenes de ofertas de empleo. Tus prompts ayudarán a una IA visual a generar el fondo y los elementos temáticos adecuados que se alineen con la posición laboral de la vacante que te piden. Tu trabajo es transformar un prompt de un cliente a un prompt capaz de generar la imagen publicitaria más atractiva posible en función de lo que dice el cliente.
 
+Para esto, teniendo en cuenta el prompt que se te enviará, crearás un prompt para la generación de la imagen de la vacante de ese trabajo, cuidando que la imagen generada cumpla con todos los siguientes puntos:
 
-Para esto, tendrás en cuenta dos elementos; el prompt y el contexto:
-<prompt> :: Es la entrada que indica lo que el cliente ha escrito que quiere para la vacante. 
-<contexto> :: hace referencia a un tipo de acción al que está orientado el sistema actualmente, pueden ser crear o editar. 
-
-Si es crear, entonces, teniendo en cuenta el prompt inicial, crearás un prompt para la generación de esa imagen, cuidando que la imagen generada cumpla con todos los siguientes puntos.
-
+- La imagen debe ser natural, realista y atractiva para la industria del puesto de trabajo que te piden.
 
 - Debes dar contexto del objetivo de la imagen. e.g. "Crear una imagen publicitaria de una oferta de empleo que muestre..."
 
-- Descripción de la persona o las personas, que se muestran en la imagen incluyendo sus prendas y facciones. e.g. "...una mujer sonriente con un aspecto profesional y amigable vestida con una blusa blanca y un chaleco rojo, llevando un distintivo con un cordón"
+- La descripción deben incluir elementos visuales específicos relacionados con el trabajo, el estilo y tono sugerido de la imagen, y cualquier atmósfera particular que pueda ser relevante para la industria del trabajo. e.g. "...una mujer sonriente con un aspecto profesional y amigable vestida con una blusa blanca y un chaleco rojo, llevando un distintivo con un cordón"
 
-- Detalles sobre el entorno. Debe de describir el ambiente que debe ser plasmado en la imagen. Debe estar orientado al puesto de trabajo. e.g. "El fondo será borroso con una ambientación de oficina o supermercado"
+- Detalles sobre el entorno. Debe de describir el ambiente que debe ser plasmado en la imagen. Debe estar orientado al puesto de trabajo. e.g. "El fondo será borroso con una ambientación de supermercado"
 
-- Especificación del apartado de la información. Debes especificar, la forma, posición y color de la figura que tendrá la información de la vacante. Siempre menciona que este sección debe estar completamente vacía. e.g.
+- Especificación del apartado del apartado de información de vacante. Debes especificar, la forma, posición y color de la figura que tendrá la información de la vacante. Siempre menciona que este sección debe estar completamente vacía. e.g. "En la parte superior debe haber un cuadrado completamente blanco que es el espacio donde irá la información de la vacante"
 
- - Recuerda evitar incluir cualquier texto real o logotipos específicos de la empresa en los elementos visuales.
+- Recuerda evitar incluir cualquier texto real o logotipos específicos de la empresa en los elementos visuales.
 
 # Ejemplo de un prompt para el puesto de auxiliar de pago en un supermercado: 
 
 "Crear una imagen publicitaria de una oferta de empleo que muestre a una mujer sonriente con un aspecto profesional y amigable. Debe estar vistiendo una blusa blanca con un chaleco rojo y llevando un distintivo con un cordón. La imagen debe incluir un fondo de oficina o supermercado borroso. En la parte superior debe haber un cuadrado completamente blanco que es el espacio donde irá la información de la vacante. Evita cualquier texto real o logotipos específicos de empresas en la imagen, como si fuera una plantilla vacía."
 
-
-Por otra parte, si es editar, crearás un prompt corto lo suficientemente específico para llevar a cabo la edición de la imagen.
-
-El prompt estará dentro de los divisores ####. Debes entregar un texto que será el prompt que recibirá el generador de imágenes. No incluyas algo más allá de este texto.
-
+El prompt estará dentro de los divisores ####. Debes entregar un texto que será el prompt que recibirá el generador de imágenes. No incluyas algo más allá de este texto. Recuerda que debe estar basado en la vacante que te dicen, no otra cosa.
 """
 
 
@@ -80,6 +72,9 @@ class OpenAIGenerator(ImageGenerator):
            extended_prompt = extend_prompt("Escribe un prompt creativo para una oferta de empleo")
            print(extended_prompt)  # Imprime la versión extendida del prompt.
         """
+
+        print("Transformando el prompt...")
+        print(initial_prompt)
         completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -88,6 +83,7 @@ class OpenAIGenerator(ImageGenerator):
             ]
         )
         extended_message = completion.choices[0].message.content
+        print(extended_message)
         return extended_message
 
     def get_image_url(self, prompt: str) -> str:
@@ -104,6 +100,8 @@ class OpenAIGenerator(ImageGenerator):
             image_url = create_image("Una ilustración de un programador feliz en una oficina moderna")
             print(image_url)  # Imprime la URL de la imagen generada.
         """
+        print("Generando una imagen...")
+        print(prompt)
         response = client.images.generate(
             model="dall-e-3",
             prompt=prompt,

@@ -11,7 +11,7 @@ image_generator = OpenAIGenerator()
 def index():
     if request.method == 'POST':
         prompt = request.form['text']
-        image_url = image_generator.get_image_url(prompt)
+        image_url = image_generator.get_image(prompt)
         static_folder = "static"
         image_path = os.path.join(static_folder, "generated_image.png")
         image_generator.download_image(image_url, image_path)
