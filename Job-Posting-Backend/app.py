@@ -1,5 +1,6 @@
 import os
 import uuid
+from modules.ImageGenerator import ImageGenerator, ImageGeneratorException
 from flask import Flask, request, send_file, jsonify
 from modules.OpenAIGenerator import OpenAIGenerator
 from flask_cors import CORS
@@ -24,12 +25,9 @@ def generate_image():
       with open(image_path, "rb") as f:
         image_bytes = f.read()
       image_base64 = base64.b64encode(image_bytes).decode("utf-8")
-
       # Wrap the encoded image data in a dictionary
       response_data = {"image": image_base64}  
-
       image_base64 = base64.b64encode(image_bytes).decode("utf-8")
-
       # Enviar la imagen como respuesta
       return jsonify(response_data)
 
