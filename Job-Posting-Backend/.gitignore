@@ -5,7 +5,3 @@ __pycache__/
 *.pyc[cod]
 
 .pytest_cache/
-
-static/
-img
-```

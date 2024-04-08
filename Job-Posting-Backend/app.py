@@ -1,6 +1,5 @@
 import os
 import uuid
-from modules.ImageGenerator import ImageGenerator, ImageGeneratorException
 from flask import Flask, request, send_file, jsonify
 from modules.OpenAIGenerator import OpenAIGenerator
 from flask_cors import CORS
