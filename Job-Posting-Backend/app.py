@@ -21,12 +21,21 @@ def generate_image():
       image_path = os.path.join("static/img", new_filename)
       image_generator.download_image(image_url, image_path)
 
+      new_filename1 = str(uuid.uuid4()) + '.png'
+      image_url1 = image_generator.get_image_url(prompt)
+      image_path1 = os.path.join("static/img", new_filename1)
+      image_generator.download_image(image_url1, image_path1)
+
       with open(image_path, "rb") as f:
         image_bytes = f.read()
       image_base64 = base64.b64encode(image_bytes).decode("utf-8")
+
+      with open(image_path1, "rb") as f:
+        image_bytes1 = f.read()
+      image_base641 = base64.b64encode(image_bytes1).decode("utf-8")
+
       # Wrap the encoded image data in a dictionary
-      response_data = {"image": image_base64}  
-      image_base64 = base64.b64encode(image_bytes).decode("utf-8")
+      response_data = {"image": image_base64, "image1": image_base641}  
       # Enviar la imagen como respuesta
       return jsonify(response_data)
 
