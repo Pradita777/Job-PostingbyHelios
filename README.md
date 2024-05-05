@@ -35,6 +35,10 @@ Dentro de este proyecto de azure estamos documentado todo nuestro proceso como e
      ```
      pip install Flask
      ```
+   - Instala Flask CORS ejecutando el siguiente comadno en tu terminal:
+     ```
+     pip install flask-cors
+     ```
 
 2. **Frontend (React)**:
 
