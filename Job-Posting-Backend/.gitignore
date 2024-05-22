@@ -1,4 +1,4 @@
-helios-env/
+venv/
 .env
 
 __pycache__/
@@ -6,7 +6,7 @@ __pycache__/
 
 .pytest_cache/
 
-static/imag/
+.static/img/*.png
 
 # Node.js
 node_modules/

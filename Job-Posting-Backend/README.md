@@ -1,8 +1,19 @@
+# Comando para crear el entorno virtual:
+    ```
+    python -m venv venv
+    ```
+
 # Comando para activar el entorno virtual:
     ```
     .\venv\Scripts\activate
     ```
-# Despues de acceder al entorno virtual debes descargar las dependencias del proyecto que se encuentran en requirements.txt y inicializar el proyecto de esta forma:
+    
+# Comando para instalar el paquete de requirements:
+    ```
+    pip install -r requirements.txt
+    ```
+
+# Comando para iniciar el back:
     ```
     flask run
     ```

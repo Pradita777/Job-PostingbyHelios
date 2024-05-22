@@ -1,5 +1,5 @@
-flask~=3.0.2
+Flask~=3.0.2
+Flask-CORS~=3.0.10 
 requests~=2.31.0
 openai~=1.16.1
 python-dotenv~=1.0.1
-pip install Flask-CORS
