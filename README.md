@@ -35,15 +35,13 @@ Dentro de este proyecto de azure estamos documentado todo nuestro proceso como e
      ```
      pip install Flask
      ```
+   - Instala Flask CORS ejecutando el siguiente comadno en tu terminal:
+     ```
+     pip install flask-cors
+     ```
 
 2. **Frontend (React)**:
-
-   - Asegúrate de tener Node.js instalado en tu sistema.
-   - Crea una nueva aplicación React ejecutando el siguiente comando en tu terminal:
-
-     ```
-     npx create-react-app frontend
-     ```
+> [Frontend repository](https://github.com/Jucept/helios-Vite)
 
 ## Configuración
 
@@ -56,17 +54,6 @@ Dentro de este proyecto de azure estamos documentado todo nuestro proceso como e
      ```
 
    - El servidor Flask se iniciará en `http://localhost:5000/`.
-
-2. **Frontend (React)**:
-
-   - Inicia el servidor de desarrollo de React ejecutando el siguiente comando en la terminal dentro del directorio `frontend`:
-
-     ```
-     cd frontend
-     npm start
-     ```
-
-   - La aplicación React se iniciará en `http://localhost:3000/`.
 
 ## Referencias: 
 
